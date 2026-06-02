@@ -12,7 +12,7 @@ class ServerController extends Controller
 {
     public function home(): View
     {
-        $posts = Post::with('user')->get();
+        $posts = Post::with('user')->paginate(10);
 
         return view('home', compact('posts'));
     }
