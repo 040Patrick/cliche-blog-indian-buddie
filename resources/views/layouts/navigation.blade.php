@@ -3,26 +3,34 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
 
-                    @if(Auth::user()->usertype === 'admin')
-                        <a href="{{ route('admin.dashboard') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                        </a>
-                    @else
+                <div class="shrink-0 flex items-center">
                         <a href="{{ route('dashboard') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-900"> 
+                                ColTT<span class="text-gray-500">Bytes</span> 
+                            </a>
+                        </a>
+                    
+                        <a href="{{ route('dashboard') }}">
+                            <a href="{{ route('home') }}" class="text-2xl font-bold text-gray-900"> 
+                                ColTT <span class="text-gray-500">Bytes</span> 
+                            </a>
                         </a>    
-                    @endif
 
                 </div>
 
                 <!-- Navigation Links -->
                 @if(Auth::user()->usertype === 'admin')
+
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __(' Admin Dashboard') }}
+                        </x-nav-link>
+                    </div>
+
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('post.create')" :active="request()->routeIs('dashboard')">
+                            {{ __(' Add Post ') }}
                         </x-nav-link>
                     </div>
                 @else
@@ -32,7 +40,6 @@
                         </x-nav-link>
                     </div>
                 @endif
-
             </div>
 
             <!-- Settings Dropdown -->
@@ -84,9 +91,11 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>    
+            
         </div>
 
         <!-- Responsive Settings Options -->
