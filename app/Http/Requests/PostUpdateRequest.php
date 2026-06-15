@@ -34,12 +34,12 @@ class PostUpdateRequest extends FormRequest
     {
         return [
             'title.required' => 'Title is mandatory',
-            'title.string' => 'Title is not in a acceptable format',
-            'title.max' => 'Title is to large',
+            'title.string' => 'Title is not in an acceptable format',
+            'title.max' => 'Title is too large',
             
-            'content.string' => 'content is not in a acceptable format',
+            'content.string' => 'content is not in an acceptable format',
 
-            'image.image' => 'It needs to be an image',
+            'image.image' => 'It needs to be a file',
             'image.mime' => 'Image format must be jpg, jpeg or png',
             'image.max' => 'Image file is too big'
         ];
